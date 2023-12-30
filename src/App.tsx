@@ -51,6 +51,11 @@ function App() {
     setTodos(newTodos);
   };
 
+  const handleDelete = (id: number) => {
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
+  }
+
   return (
     <div className="App">
       <div>
@@ -64,6 +69,7 @@ function App() {
             <li key={todo.id}>
               <input type="text" onChange={(event) => handleEdit(todo.id, event.target.value)} className='inputText' value={todo.inputValue} disabled={todo.checked} />
               <input type="checkbox" onChange={(event) => handleChecked(todo.id, todo.checked)} />
+              <button onClick={() => handleDelete(todo.id)}>消す</button>
             </li>
           ))}
         </ul>
